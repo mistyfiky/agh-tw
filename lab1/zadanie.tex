@@ -3,7 +3,13 @@ Zaimplementować program, w którym zmienna jest inkrementowana lub dekrementowa
 
 \lstinputlisting[caption=Kod źródłowy klasy Main do zadania,label=lst:MainJava]{Main.java}
 
-\lstinputlisting[caption=Kod źródłowy klasy Number do zadania,label=lst:NumberJava]{Number.java}
+\lstinputlisting[caption=Skrypt do generowania wyników do zadania,label=lst:ZadanieSh]{zadanie.sh}
+
+\lstinputlisting[caption=Wyniki działania programu do zadania,label=lst:ZadanieDat]{zadanie.dat}
 
 \paragraph{Podsumowanie}~\\
-TODO
+Program widoczny na listingu~\ref{lst:MainJava} pokazuje problem synchronizacji dostępu do zasobu przez wiele wątków programu.
+Jego wyniki zostały wygenerowane za pomocą skryptu widocznego na listowaniu~\ref{lst:ZadanieSh} i są widoczne na listowaniu~\ref{lst:ZadanieDat}.
+Można zauważyć, że mimo że program nie ma ma w sobie logiki która miałaby wskazywać na losowość wyników, to rezultat jest inny.
+Takie zachowanie programu nazywamy niedeterminizem i jest ono niepożądane w większości przypadków.
+Dlatego stosuje się różne sposoby i algorytmy do synchronizacji dostępu do zasobu procesów lub wątków programie.

@@ -1,7 +1,12 @@
-.PHONY : all
-
-all :: raport.pdf
+default : all
 
 include ../java.makefile ../latex.makefile
 
-raport.pdf : zadanie.tex Main.java Number.java
+.PHONY : default all
+
+all : zadanie.dat raport.pdf
+
+raport.pdf : zadanie.tex
+
+zadanie.dat : zadanie.sh Main.class
+	./$< > $@
