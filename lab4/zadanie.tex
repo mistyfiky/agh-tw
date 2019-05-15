@@ -1,0 +1,55 @@
+\paragraph{Treść}~\\
+Problem czytelników i pisarzy proszę rozwiązać przy pomocy:\\
+- Semaforów\\
+- Zmiennych warunkowych\\
+Rozważyć przypadki z faworyzowaniem czytelników, pisarzy oraz z użyciem kolejki FIFO.\\
+Proszę wykonać pomiary dla każdego rozwiązania dla różnej ilości czytelników (10 - 100) i pisarzy (od 1 do 10).\\
+W sprawozdaniu proszę narysować wykres czasu w zależności od ilości wątków i go zinterpretować.
+
+\lstinputlisting[caption=Kod źródłowy klasy Main do zadania,label=lst:MainJava]{Main.java}
+
+\lstinputlisting[caption=Kod źródłowy klasy ReadersWritersProblem do zadania,label=lst:ReadersWritersProblemJava]{ReadersWritersProblem.java}
+
+\lstinputlisting[caption=Kod źródłowy klasy ReadersWritersProblemSemaphores do zadania,label=lst:ReadersWritersProblemSemaphoresJava]{ReadersWritersProblemSemaphores.java}
+
+\lstinputlisting[caption=Kod źródłowy klasy ReadersWritersProblemConditions do zadania,label=lst:ReadersWritersProblemConditionsJava]{ReadersWritersProblemConditions.java}
+
+\lstinputlisting[caption=Skrypt do generowania danych do zadania,label=lst:ZadanieSh]{zadanie.sh}
+
+\lstinputlisting[caption=Komendy dla programu gnuplot do wygenerowania wykresów do zadania,label=lst:ZadanieGpi]{zadanie.gpi}
+
+\begin{figure}[p]
+  \caption{Wynik programu gnuplot dla rozwiązania z semaforami na podstawie komend do zadania}
+  \label{fig:SemaphoresJpg}
+  \centering
+  \includegraphics[width=\textwidth]{semaphores.jpg}
+\end{figure}
+
+\begin{figure}[p]
+  \caption{Wynik programu gnuplot dla rozwiązania ze zmiannymi warunkowymi na podstawie komend do zadania}
+  \label{fig:ConditionsJpg}
+  \centering
+  \includegraphics[width=\textwidth]{conditions.jpg}
+\end{figure}
+
+\paragraph{Podsumowanie}~\\
+Problem czytalników i pisarzy został rozwiązany przy pomocy algorytmów opisanych pseudokodem z użyciem semaforów~\cite{WikipediaReadersWritersProblem} oraz zmiennych warunkowych~\cite{GithubAngraveSystemProgrammingSynchronization7}.
+Problem jest abstrakcyjnie zaimplementowany w klasie ReadersWritersProblem widocznej na listowaniu ~\ref{lst:ReadersWritersProblemConditionsJava}.
+Implementacja wspomnianych wcześniejszych algorytmów do synchronizacji, jest widoczna w klasach odpowiednio ReadersWritersProblemSemaphores na listowaniu ~\ref{lst:ReadersWritersProblemSemaphoresJava} oraz ReadersWritersProblemConditions na listowaniu~\ref{lst:ReadersWritersProblemConditionsJava}.
+Wyniki programu są widoczne osobno dla rozwiązania z użyciem semaforów na wykresie~\ref{fig:SemaphoresJpg}, a z użyciem zmiennych warunkowych na wykresie~\ref{fig:ConditionsJpg}.
+Zostały one wygenerowane za pomocą programu Gnuplot przez przekazanie komend widocznych na listowaniu~\ref{lst:ZadanieGpi}.
+Do wygenerowania serii danych dla wykresów posłużył skrypt widoczny na listowaniu~\ref{lst:ZadanieSh}.
+Dla przejrzystości wykresów dane zostały ręcznie przefiltrowane w celu wyszukania błędnych pomiarów, które mogły pojawić się ze względu na wielozadaniowość maszyny na której były one generowane.
+Z wykresów można odczytać, że największy wpływ na czas wykonywania programu ma ilość czytelników.
+Ilość pisarzy w podanym w treści zadania przedziale nie ma tak dużego wływu na czas wykonywania programu.
+Oba algorytmy radzą sobie z problemem synchronizacji w podobny czasowo sposób.
+Różnice widoczne są w priorytetyzowaniu czytelników i pisarzy.
+Logi pozostawiane przez programy wskazywały, że algorytm z użyciem semaforów równo rozdzielał dostęp pomięczy czytelników, a pisarzy.
+Można było zauważyć, że dostęp ten był proporcjonalny do ustawionej ilości pisarzy i czytelników.
+Algorytm z użyciem zmiannych warunkowych faworyzował jednak pisarzy.
+Z logów programu często można było wyczytać, że pisarze częściej dostawali się do zasobu i szybciej zakańczali swoje działanie.
+
+\begin{thebibliography}{9}
+  \bibitem{WikipediaReadersWritersProblem} Readers–writers problem - Wikipedia https://en.wikipedia.org/wiki/Readers\%E2\%80\%93writers\_problem\#Third\_readers-writers\_problem\\
+  \bibitem{GithubAngraveSystemProgrammingSynchronization7} Synchronization, Part 7: The Reader Writer Problem https://github.com/angrave/SystemProgramming/wiki/Synchronization\%2C-Part-7\%3A-The-Reader-Writer-Problem\#attempt-4
+\end{thebibliography}

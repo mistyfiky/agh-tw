@@ -1,0 +1,13 @@
+#!/usr/bin/env gnuplot
+
+set terminal jpeg
+
+set dgrid3d
+set style data lines
+set pm3d
+
+set output 'semaphores.jpg'
+splot 'semaphores.dat' pal
+
+set output 'conditions.jpg'
+splot 'conditions.dat' pal
