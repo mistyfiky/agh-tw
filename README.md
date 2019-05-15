@@ -1,2 +1,4 @@
 # Teoria współbieżności
+```
+make
 
