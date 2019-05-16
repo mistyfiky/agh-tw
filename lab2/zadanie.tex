@@ -1,0 +1,21 @@
+\paragraph{Treść}~\\
+Proszę zaimplementować semafor z użyciem mechanizmu monitora w Javie (szkielet programu).
+Zastosować semafor do problemu wyścigu.
+
+\lstinputlisting[caption=Szkielet programu załączony do zadania,label=lst:SemaforMonJava]{SemaforMon.java}
+
+\lstinputlisting[caption=Kod klasy Semafor do zadania,label=lst:SemaforJava]{Semafor.java}
+
+\lstinputlisting[caption=Przerobiony kod źródłowy klasy Main do zadania z poprzedniego labolatorium,label=lst:MainJava]{Main.java}
+
+\lstinputlisting[caption=Skrypt do generowania wyników do zadania,label=lst:ZadanieSh]{zadanie.sh}
+
+\lstinputlisting[caption=Wyniki działania programu do zadania,label=lst:ZadanieDat]{zadanie.dat}
+
+\paragraph{Podsumowanie}~\\
+Semafor w rozwiązaniu widoczny jest na listowaniu~\ref{lst:SemaforJava} i został zaimplementowany z pomocą szkeletu programu załączonego do zadania widocznego na listowaniu~\ref{lst:SemaforMonJava}.
+Używa on metod wait() i notify() w bloku synchronized ustawionym na instancję klasy Semafor.
+Dzięki temu wątki, które operują na tym samym semaforze mają do niego dosęp synchroniczny.
+Pozwala to na poprawienie problemu wyścigu, widocznego na listowaniu~\ref{lst:MainJava}, z poprzedniego zadania.
+Wyniki poprawionego programu widoczne na listowaniu~\ref{lst:ZadanieDat} zostały wygenerowane za pomocą skryptu z listowania~\ref{lst:ZadanieSh}.
+Widać na nich, że program działa prawidłowo przy wszytkich uruchomieniach.
