@@ -7,29 +7,25 @@ class Semafor
     {
     }
 
-    public synchronized void P()
+    synchronized void P()
     {
-        synchronized (this) {
-            _czeka++;
-            while (!_stan) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    System.err.println(e.getMessage());
-                }
+        _czeka++;
+        while (!_stan) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                System.err.println(e.getMessage());
             }
-            _stan = false;
-            _czeka--;
         }
+        _stan = false;
+        _czeka--;
     }
 
-    public synchronized void V()
+    synchronized void V()
     {
-        synchronized (this) {
-            _stan = true;
-            if (0 < _czeka) {
-                notify();
-            }
+        _stan = true;
+        if (0 < _czeka) {
+            notify();
         }
     }
 }   
