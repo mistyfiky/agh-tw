@@ -1,0 +1,35 @@
+\paragraph{Treść}~\\
+Dany jest bufor, do którego producent może wkładać dane, a konsument pobierać.
+Napisać program, który zapewni takie działanie producenta i konsumenta, w którym zapewniona będzie własność bezpieczeństwa i żywotności.
+Zrealizować program:
+1. przy pomocy metod wait()/notify()/signal()/await().\\
+  - dla przypadku 1 producent/1 konsument\\
+  - dla przypadku n1 producentów/n2 konsumentów (n1>n2, n1=n2, n1 mniej od n2)\\
+  - wprowadzić wywołanie metody sleep() i wykonać pomiary, obserwując zachowanie producentów/konsumentów\\
+2. przy pomocy operacji P()/V() dla semafora:\\
+  - n1=n2=1
+  - n1>1, n2>1
+
+\lstinputlisting[caption=Szkielet programu załączony do zadania,label=lst:PKmonJava]{PKmon.java}
+
+\lstinputlisting[caption=Kod klasy BoundedBufferProblem do zadania,label=lst:BoundedBufferProblemJava]{BoundedBufferProblem.java}
+
+\lstinputlisting[caption=Kod klasy BoundedBufferProblemConditions do zadania,label=lst:BoundedBufferProblemConditionsJava]{BoundedBufferProblemConditions.java}
+
+\lstinputlisting[caption=Kod klasy BoundedBufferProblemSemaphores do zadania,label=lst:BoundedBufferProblemSemaphoresJava]{BoundedBufferProblemSemaphores.java}
+
+\lstinputlisting[caption=Kod klasy Main do zadania,label=lst:MainJava]{Main.java}
+
+\lstinputlisting[caption=Przykładowy wynik działania programu,label=lst:ZadanieOut]{zadanie.out}
+
+\paragraph{Podsumowanie}~\\
+Na listingu~\ref{lst:BoundedBufferProblemJava} zaprezentowany jest abstrakcyjny problem producentów i konsumentów, zaimplementowany dla rozwiązania zadania na podstawie szkieletu dołączonego do zadania, widocznego na listingu~\ref{lst:PKmonJava}.
+Program z listingu~\ref{lst:MainJava} w zależności od podanych argumentów uruchamia rozwiązanie ze zmiennymi warunkowymi, z listingu~\ref{lst:BoundedBufferProblemConditionsJava}, lub z semaforami, zaimplementowany na podstawie algorytmu z pseudokodem~\cite{SolutionToProducerConsumerProblemUsingSemaphores}, z listingu~\ref{lst:BoundedBufferProblemSemaphoresJava}.
+Kolejne argumenty programu służą za ustawianie ilości producentów i konsumentów, wielkości bufora oraz czasu opóźnienia między kolejnymi iteracjami producentów i konsumentów.
+Na listingu~\ref{lst:ZadanieOut} widać przykładowy rezultat uruchomienia programu z argumentami \texttt{conditions 1 1 10 10 10}.
+Gdy producentów i konsumentów jest taka sama liczba to naprzemiennie produkują i konsumują do i z bufora i program kończy normalnie swoje działanie.
+Gdy instancji jednego typu jest więcej, wtedy program blokuje się, ponieważ typ z mniejszą ilością instancji nie produkuje/konsumuje wystarczającej ilości zasobów i kończy swoje działanie, a drugi typ czeka na uzupełnienie/zwolnienie miejsca.
+
+\begin{thebibliography}{9}
+      \bibitem{SolutionToProducerConsumerProblemUsingSemaphores} Solution to Producer Consumer problem using Semaphores http://denninginstitute.com/modules/ipc/purple/prodsem.html
+\end{thebibliography}
